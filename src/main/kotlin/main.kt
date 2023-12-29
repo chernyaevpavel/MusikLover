@@ -6,12 +6,14 @@ fun main() {
     val percent = 5.0
     val vipPercent = 1.0
 
-    var sale = 0.0
-    if (amount in 1001..10_000) {
-        sale = 100.0
-    } else if (amount > 10_001) {
-        sale = (amount * percent).roundToInt() / 100.0
-    }
+    var sale =
+        if (amount in 1001..10_000) {
+            100.0
+        } else if (amount >= 10_001) {
+            (amount * percent).roundToInt() / 100.0
+        } else {
+            0.0
+        }
     if (isVipClient) sale += (amount * vipPercent).roundToInt() / 100.0
     println(sale)
 }
